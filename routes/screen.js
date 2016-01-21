@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET wait teams. */
+/* wait teams and go to show_score */
 router.get('/', function(req, res, next) {
   res.render('screen/index', {});
-});
-
-/* next is show scores */
-router.get('/wait_teams', function(req, res, next) {
-  res.render('screen/wait_teams', {});
 });
 
 /* next is black_card or end game */
