@@ -1,25 +1,31 @@
 [
 	{
+		"color": "black",
 		"sentence": "This is a ____.",
 		"words": 1
 	},
 	{
+		"color": "black",
 		"sentence": "This is another sentence with a ____.",
 		"words": 1
 	},
 	{
+		"color": "black",
 		"sentence": "Here another one ____.",
 		"words": 1
 	},
 	{
+		"color": "black",
 		"sentence": "Here a ____ with ____ words.",
 		"words": 2
 	},
 	{
+		"color": "black",
 		"sentence": "Here another ____ with ____ words.",
 		"words": 2
 	},
 	{
+		"color": "black",
 		"sentence": "And a last ____ with ____ words.",
 		"words": 2
 	}
