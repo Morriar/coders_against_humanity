@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
 
+//var auth = require('./middlewares/auth.js');
+
 var routes = require('./routes/index');
 var screen = require('./routes/screen');
 var team = require('./routes/team');

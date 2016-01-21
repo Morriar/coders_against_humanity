@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-	h1.page-title Waiting for teams...
+	h1.page-title ##{room.id} waiting for teams...
 
 	.container
 		.row
@@ -17,8 +17,9 @@ block content
 					strong team 3
 			.col-xs-6
 				.slot.slot-empty
-		.row
-			.spacer
-		.row.text-center
-			.col-xs-12
-				a.btn.btn-primary.btn-lg(href="/screen/show_scores") Start Game
+		if session.admin
+			.row
+				.spacer
+			.row.text-center
+				.col-xs-12
+					a.btn.btn-primary.btn-lg(href="/screen/show_scores") Start Game

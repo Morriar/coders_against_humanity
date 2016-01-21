@@ -1,9 +1,38 @@
 var express = require('express');
+var session = require('express-session')
+var rooms = require('../model/rooms');
+
 var router = express.Router();
+
+function createRoom() {
+	var room = {
+		id: Math.floor((Math.random() * 10) + 1),
+		teams: [
+			{
+				name: "team1",
+				score: 10
+			}, {
+				name: "team2",
+				score: 20
+			}
+		]
+	}
+	rooms.insert(room);
+	return room;
+}
 
 /* wait teams and go to show_score */
 router.get('/', function(req, res, next) {
-  res.render('screen/index', {});
+	if(req.session.room_id) {
+		rooms.findOne(req.session.room_id, function(room) {
+			res.render('screen/index', { session: req.session, room: room });
+		});
+	} else {
+		var room = createRoom();
+		req.session.admin = true;
+		req.session.room_id = room.id;
+		res.render('screen/index', { session: req.session, room: room });
+	}
 });
 
 /* next is black_card or end game */
