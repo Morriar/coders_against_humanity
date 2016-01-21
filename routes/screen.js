@@ -30,15 +30,15 @@ function createRoom(blacks, whites) {
 router.get('/', function(req, res, next) {
 	if(req.session.room_id) {
 		rooms.findOne(req.session.room_id, function(room) {
-			res.render('screen/index', { session: req.session, room: room });
+			res.render('wait_teams', { session: req.session, room: room });
 		});
 	} else {
 		cards.find({color: "white"}, function(whites) {
 			cards.find({color: "black"}, function(blacks) {
-				var room = createRoom(blacks, whites);
+				var room = rooms.create(blacks, whites);
 				req.session.admin = true;
 				req.session.room_id = room.id;
-				res.render('screen/index', { session: req.session, room: room });
+				res.render('wait_teams', { session: req.session, room: room });
 			});
 		});
 	}
@@ -51,7 +51,7 @@ router.get('/show_scores', function(req, res, next) {
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
-		res.render('screen/show_scores', { session: req.session, room: room});
+		res.render('show_scores', { session: req.session, room: room});
 	});
 });
 
@@ -72,7 +72,7 @@ router.get('/show_black_card', function(req, res, next) {
 			}
 		}
 		rooms.save(room);
-		res.render('screen/show_black_card', { session: req.session, room: room });
+		res.render('show_black_card', { session: req.session, room: room });
 	});
 });
 
@@ -83,7 +83,7 @@ router.get('/show_results', function(req, res, next) {
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
-		res.render('screen/show_results', { session: req.session, room: room });
+		res.render('show_results', { session: req.session, room: room });
 	});
 });
 
@@ -96,7 +96,7 @@ router.get('/end_game', function(req, res, next) {
 	rooms.findOne(req.session.room_id, function(room) {
 		delete req.session.admin;
 		delete req.session.room_id;
-		res.render('screen/end_game', {room: room});
+		res.render('end_game', {room: room});
 	});
 });
 

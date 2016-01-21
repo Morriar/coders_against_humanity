@@ -6,17 +6,10 @@ block content
 
 	.container
 		.row
-			.col-xs-6
-				.slot.slot-success
-					strong team 1
-			.col-xs-6
-				.slot.slot-success
-					strong team 2
-			.col-xs-6
-				.slot.slot-success
-					strong team 3
-			.col-xs-6
-				.slot.slot-empty
+			each team in room.teams
+				.col-xs-6
+					.slot.slot-success
+						strong= team.name
 		if session.admin
 			.row
 				.spacer
