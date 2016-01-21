@@ -15,5 +15,6 @@
     "serve-favicon": "~2.2.1",
     "mongodb": "~2.0.52",
     "mongoskin": "~2.0.3",
+    "express-session": "~1.12.1"
   }
 }
