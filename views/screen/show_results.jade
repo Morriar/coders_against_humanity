@@ -1,0 +1,40 @@
+extends layout
+
+block content
+
+	h1.page-title Results
+
+	.container
+		.row
+			.col-xs-6
+				.slot.round-result
+					strong team 1
+					a.btn.btn-primary.pull-left(href="/screen/show_scores") Vote
+					.card.card-black
+						| Black card&nbsp;
+						span.card.card-white word1
+						| &nbsp;with&nbsp;
+						span.card.card-white word2
+
+			.col-xs-6
+				.slot.round-result
+					strong team 2
+					a.btn.btn-primary.pull-left(href="/screen/show_scores") Vote
+					.card.card-black
+						| Black card&nbsp;
+						span.card.card-white word1
+						| &nbsp;with&nbsp;
+						span.card.card-white word2
+		.row
+			.col-xs-6
+				.slot
+					strong team 3
+					a.btn.btn-primary.pull-left(href="/screen/show_scores") Vote
+					.round-result
+						.card.card-black
+							| Black card&nbsp;
+							span.card.card-white word1
+							| &nbsp;with&nbsp;
+							span.card.card-white word2
+			.col-xs-6
+				.slot

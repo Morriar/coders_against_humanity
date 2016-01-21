@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+	h1.page-title Waiting for teams...
+
+	.container
+		.row
+			.col-xs-6
+				.slot.slot-success
+					strong team 1
+			.col-xs-6
+				.slot.slot-success
+					strong team 2
+		.row
+			.spacer
+		.row
+			.col-xs-6
+				.slot.slot-success
+					strong team 3
+			.col-xs-6
+				.slot.slot-empty
+		.row
+			.spacer
+		.row.text-center
+			.col-xs-12
+				a.btn.btn-primary.btn-lg(href="/screen/show_scores") Start Game

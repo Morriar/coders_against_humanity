@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+	h1.page-title Round 1 / 5
+
+	.container
+		.row
+			.col-xs-6
+				.slot.slot-success
+					strong team 1
+					p.score 100
+			.col-xs-6
+				.slot.slot-success
+					strong team 2
+					p.score 100
+		.row
+			.spacer
+		.row
+			.col-xs-6
+				.slot.slot-success
+					strong team 3
+					p.score 100
+			.col-xs-6
+				.slot.slot-danger
+		.row
+			.spacer
+		div.row.text-center
+			div.col-xs-6
+				a.btn.btn-primary.btn-lg(href="/screen/show_black_card") Start Round
+			div.col-xs-6
+				a.btn.btn-danger.btn-lg(href="/screen/end_game") End Game
