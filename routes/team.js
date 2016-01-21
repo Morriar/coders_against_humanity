@@ -57,8 +57,42 @@ router.get('/show_scores', function(req, res, next) {
 });
 
 /* next is show results */
-router.get('/show_white_cards', function(req, res, next) {
-		res.render('show_white_cards', { session: req.session, room: room, team: team});
+router.get('/show_black_card', function(req, res, next) {
+	if(!req.session.room_id || !req.session.team_name) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		// load team
+		var team = room.teams[req.session.team_name];
+		if(!team) {
+			res.redirect('/');
+			return;
+		}
+		// build team deck
+		while(team.hand.length < 5) {
+			team.hand.push(room.deck.white.pop())
+		}
+		rooms.save(room);
+		res.render('show_black_card', { session: req.session, room: room });
+	});
+});
+
+router.post('/pick_white_cards', function(req, res, next) {
+	var cards = req.body["cards[]"];
+	if(!cards) {
+		res.redirect('/team/show_black_card');
+		return;
+	}
+	if(!req.session.room_id || !req.session.team_name) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		room.current_round.hands[req.session.team_name] = cards;
+		rooms.save(room);
+		res.redirect('/team/show_results');
+	});
 });
 
 /* next is show scores */

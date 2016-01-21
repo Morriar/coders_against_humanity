@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-	h1.page-title Pick your white card...
+	h1.page-title Pick your white cards...
 
 	.container
 		.row
@@ -13,13 +13,33 @@ block content
 		.row
 			.card.card-black= room.current_round.black_card.sentence
 
-		if session.admin
-			.row
-				.spacer
-			.row
-				table.table
-					tr
-						each team in room.teams
+		.row
+			.spacer
+
+		if session.team_name
+			form(action="/team/pick_white_cards", method="post")
+				.row
+					each card in room.teams[session.team_name].hand
+						.col-xs-6
+							.slot
+								.card.card-white
+									input(type="checkbox", id="#{card.word}", name="cards[]", value="#{card.word}")
+									p= card.word
+				.row.text-center
+					button.btn.btn-primary(type="submit") Submit
+
+		.row
+			table.table
+				tr
+					each team in room.teams
+						if room.current_round.hands[team.name]
 							th.success.text-center= team.name
+						else
+							th.danger.text-center= team.name
+
+		.row
+			.spacer
+
+		if session.admin
 			.row.text-center
 				a.btn.btn-warning(href="/screen/show_results") End Round

@@ -45,10 +45,7 @@ router.get('/show_black_card', function(req, res, next) {
 		room.current_round = {
 			round: 1,
 			black_card: card,
-			hands: {
-				"team1": [{word: "wordOO"}, {word: "wordZZZ"}],
-				"team2": [{word: "wordBB"}, {word: "wordHH"}],
-			}
+			hands: {}
 		}
 		rooms.save(room);
 		res.render('show_black_card', { session: req.session, room: room });
