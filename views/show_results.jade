@@ -7,19 +7,20 @@ block content
 	.container
 		.row
 			-var black = room.current_round.black_card
-			each team in room.teams
-				.col-xs-6
-					.slot.round-result
-						strong= team.name
-						if session.admin
-							a.btn.btn-primary.pull-left(href="/screen/show_scores?vote=" + team.name) Vote
-						-var hand = room.current_round.hands[team.name]
-						if hand
-							.card.card-black
-								if black.words == 1
-									span!= black.sentence.replace("____", "<span class='card card-white'>" + hand[0] + "</span>")
-								else
-									-var parts = black.sentence.split("____")
-									span!= parts[0] + "<span class='card card-white'>" + hand[0] + "</span>" + parts[1] + "<span class='card card-white'>" + hand[1] + "</span>" + parts[2]
-						else
-							i no submission
+			form(action="/vote_round", method="post")
+				each team in room.teams
+					.col-xs-6
+						.slot.round-result
+							strong= team.name
+							if session.admin
+								button.btn.btn-primary.pull-left(type="submit", name="team", value=team.name) Vote
+							-var hand = room.current_round.hands[team.name]
+							if hand
+								.card.card-black
+									if black.words == 1
+										span!= black.sentence.replace("____", "<span class='card card-white'>" + hand[0] + "</span>")
+									else
+										-var parts = black.sentence.split("____")
+										span!= parts[0] + "<span class='card card-white'>" + hand[0] + "</span>" + parts[1] + "<span class='card card-white'>" + hand[1] + "</span>" + parts[2]
+							else
+								i no submission

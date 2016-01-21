@@ -11,18 +11,28 @@ block content
 					if session.team_name && session.team_name == team.name
 						.slot.slot-success
 							strong= team.name
+							p.score= team.score
 					else
 						.slot.slot-primary
 							strong= team.name
+							p.score= team.score
 		.row
 			.spacer
 
 		if session.admin
 			.row.text-center
-				.col-xs-12
-					a.btn.btn-primary.btn-lg(href="/screen/show_scores") Start Game
-
-		if session.team_name
+				if room.current_round.round < room.max_rounds
+					div.col-xs-6
+						if room.current_round.round == 1
+							a.btn.btn-primary.btn-lg(href="/new_round") Start Game
+						else
+							a.btn.btn-primary.btn-lg(href="/new_round") New Round
+					div.col-xs-6
+						a.btn.btn-danger.btn-lg(href="/end_game") End Game
+				else
+					div.col-xs-12
+						a.btn.btn-danger.btn-lg(href="/end_game") End Game
+		else if session.team_name
 			.row.text-center
 				div.col-xs-12
-					a.btn.btn-danger.btn-lg(href="/team/end_game") Quit
+					a.btn.btn-danger.btn-lg(href="/end_game") Quit

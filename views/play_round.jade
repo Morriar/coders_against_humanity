@@ -17,7 +17,7 @@ block content
 			.spacer
 
 		if session.team_name
-			form(action="/team/pick_white_cards", method="post")
+			form(action="/play_round", method="post")
 				.row
 					each card in room.teams[session.team_name].hand
 						.col-xs-6
@@ -42,4 +42,4 @@ block content
 
 		if session.admin
 			.row.text-center
-				a.btn.btn-warning(href="/screen/show_results") End Round
+				a.btn.btn-warning(href="/end_round") End Round
