@@ -5,27 +5,6 @@ var rooms = require('../model/rooms');
 
 var router = express.Router();
 
-function createRoom(blacks, whites) {
-	var room = {
-		id: new Date().getTime(),
-		teams: [
-			{
-				name: "team1",
-				score: 10
-			}, {
-				name: "team2",
-				score: 20
-			}
-		],
-		deck: {
-			black: blacks,
-			white: whites
-		}
-	}
-	rooms.insert(room);
-	return room;
-}
-
 /* wait teams and go to show_score */
 router.get('/', function(req, res, next) {
 	if(req.session.room_id) {

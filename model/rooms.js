@@ -15,6 +15,24 @@
 var db = require('mongoskin').db('mongodb://localhost:27017/csg_cah');
 db.bind('rooms');
 
+exports.create = function(blacks, whites) {
+	var room = {
+		id: new Date().getTime().toString(),
+		max_rounds: 5,
+		teams: {},
+		deck: {
+			black: blacks,
+			white: whites
+		},
+		current_round: {
+			round: 1,
+			hands: {}
+		}
+	}
+	db.rooms.insert(room);
+	return room;
+}
+
 exports.find = function(req, callback) {
 	db.rooms.find(req).toArray(function(err, rooms) {
 		if(err) {
