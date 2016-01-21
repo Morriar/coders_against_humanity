@@ -25,6 +25,11 @@
 	border-radius: 10px;
 }
 
+.slot-primary {
+	background: #337ab7;
+	color: white;
+}
+
 .slot-success {
 	background: #3B9018;
 	color: white;

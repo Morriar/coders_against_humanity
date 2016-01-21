@@ -8,11 +8,21 @@ block content
 		.row
 			each team in room.teams
 				.col-xs-6
-					.slot.slot-success
-						strong= team.name
+					if session.team_name && session.team_name == team.name
+						.slot.slot-success
+							strong= team.name
+					else
+						.slot.slot-primary
+							strong= team.name
+		.row
+			.spacer
+
 		if session.admin
-			.row
-				.spacer
 			.row.text-center
 				.col-xs-12
 					a.btn.btn-primary.btn-lg(href="/screen/show_scores") Start Game
+
+		if session.team_name
+			.row.text-center
+				div.col-xs-12
+					a.btn.btn-danger.btn-lg(href="/team/end_game") Quit
