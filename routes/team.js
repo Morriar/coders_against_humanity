@@ -97,7 +97,13 @@ router.post('/pick_white_cards', function(req, res, next) {
 
 /* next is show scores */
 router.get('/show_results', function(req, res, next) {
-		res.render('show_results', { session: req.session, room: room});
+	if(!req.session.room_id || !req.session.team_name) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		res.render('show_results', { session: req.session, room: room });
+	});
 });
 
 /* next is home */

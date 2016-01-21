@@ -16,11 +16,10 @@ block content
 						-var hand = room.current_round.hands[team.name]
 						if hand
 							.card.card-black
-								span= black.sentence
 								if black.words == 1
-									span.card.card-white= hand[0].word
+									span!= black.sentence.replace("____", "<span class='card card-white'>" + hand[0] + "</span>")
 								else
-									span.card.card-white= hand[0].word
-									span.card.card-white= hand[1].word
+									-var parts = black.sentence.split("____")
+									span!= parts[0] + "<span class='card card-white'>" + hand[0] + "</span>" + parts[1] + "<span class='card card-white'>" + hand[1] + "</span>" + parts[2]
 						else
 							i no submission
