@@ -13,8 +13,7 @@ block content
 		.row
 			.card.card-black= room.current_round.black_card.sentence
 
-		.row
-			.spacer
+		.row.spacer
 
 		if session.team_name
 			form(action="/play_round", method="post")
@@ -37,8 +36,7 @@ block content
 						else
 							th.danger.text-center= team.name
 
-		.row
-			.spacer
+		.row.spacer
 
 		if session.admin
 			.row.text-center
