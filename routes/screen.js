@@ -63,6 +63,8 @@ router.get('/end_game', function(req, res, next) {
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
+		delete req.session.admin;
+		delete req.session.room_id;
 		res.render('screen/end_game', {room: room});
 	});
 });
