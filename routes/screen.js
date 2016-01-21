@@ -37,7 +37,13 @@ router.get('/', function(req, res, next) {
 
 /* next is black_card or end game */
 router.get('/show_scores', function(req, res, next) {
-  res.render('screen/show_scores', {});
+	if(!req.session.room_id) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		res.render('screen/show_scores', { session: req.session, room: room});
+	});
 });
 
 /* next is show results */
@@ -52,7 +58,13 @@ router.get('/show_results', function(req, res, next) {
 
 /* next is home */
 router.get('/end_game', function(req, res, next) {
-  res.render('screen/end_game', {});
+	if(!req.session.room_id) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		res.render('screen/end_game', {room: room});
+	});
 });
 
 module.exports = router;

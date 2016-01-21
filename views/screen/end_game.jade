@@ -6,21 +6,11 @@ block content
 
 	.container
 		.row
-			.col-xs-6
-				.slot.slot-success
-					strong team 1
-					p.score 100
-			.col-xs-6
-				.slot.slot-danger
-					strong team 2
-					p.score 100
-		.row
-			.col-xs-6
-				.slot.slot-danger
-					strong team 3
-					p.score 100
-			.col-xs-6
-				.slot
+			each team in room.teams
+				.col-xs-6
+					.slot.slot-success
+						strong= team.name
+						p.score= team.score
 		.row
 			.spacer
 		div.row.text-center
