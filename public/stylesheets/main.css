@@ -1,0 +1,75 @@
+/* Titles */
+
+.game-title {
+	text-align: center;
+	font-size: 14em;
+}
+
+.page-title {
+	text-align: center;
+	margin: 50px;
+	font-size: 70px;
+}
+
+/* Grid system */
+
+.spacer {
+	min-height: 50px;
+}
+
+.slot {
+	margin: 10px 0px;
+	text-align: center;
+	min-height: 300px;
+	font-size: 45px;
+	border-radius: 10px;
+}
+
+.slot-success {
+	background: #3B9018;
+	color: white;
+}
+
+.slot-empty {
+	background: #ddd;
+	color: white;
+}
+
+.slot .score {
+	font-size: 120px;
+}
+
+.panel-admin {
+	margin-top: 5em;
+}
+
+.progress {
+    margin-top: 0.5em;
+}
+
+/* Cards */
+
+.card {
+	padding: 10px 20px;
+	font-size: 42px;
+	border: 1px solid black;
+	border-radius: 10px;
+	overflow-wrap: break-word;
+	min-height: 300px;
+}
+
+.card-black {
+	text-align: left;
+	background: black;
+	color: white;
+}
+
+.card-white {
+	text-align: center;
+	background: white;
+	color: black;
+}
+
+.card-black .card-white {
+	padding: 2px 5px;
+}
