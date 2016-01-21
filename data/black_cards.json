@@ -1,0 +1,26 @@
+[
+	{
+		"sentence": "This is a ____.",
+		"words": 1
+	},
+	{
+		"sentence": "This is another sentence with a ____.",
+		"words": 1
+	},
+	{
+		"sentence": "Here another one ____.",
+		"words": 1
+	},
+	{
+		"sentence": "Here a ____ with ____ words.",
+		"words": 2
+	},
+	{
+		"sentence": "Here another ____ with ____ words.",
+		"words": 2
+	},
+	{
+		"sentence": "And a last ____ with ____ words.",
+		"words": 2
+	}
+]
