@@ -6,34 +6,21 @@ block content
 
 	.container
 		.row
-			.col-xs-6
-				.slot.round-result
-					strong team 1
-					a.btn.btn-primary.pull-left(href="/screen/show_scores") Vote
-					.card.card-black
-						| Black card&nbsp;
-						span.card.card-white word1
-						| &nbsp;with&nbsp;
-						span.card.card-white word2
-
-			.col-xs-6
-				.slot.round-result
-					strong team 2
-					a.btn.btn-primary.pull-left(href="/screen/show_scores") Vote
-					.card.card-black
-						| Black card&nbsp;
-						span.card.card-white word1
-						| &nbsp;with&nbsp;
-						span.card.card-white word2
-			.col-xs-6
-				.slot
-					strong team 3
-					a.btn.btn-primary.pull-left(href="/screen/show_scores") Vote
-					.round-result
-						.card.card-black
-							| Black card&nbsp;
-							span.card.card-white word1
-							| &nbsp;with&nbsp;
-							span.card.card-white word2
-			.col-xs-6
-				.slot
+			-var black = room.current_round.black_card
+			each team in room.teams
+				.col-xs-6
+					.slot.round-result
+						strong= team.name
+						if session.admin
+							a.btn.btn-primary.pull-left(href="/screen/show_scores?vote=" + team.name) Vote
+						-var hand = room.current_round.hands[team.name]
+						if hand
+							.card.card-black
+								span= black.sentence
+								if black.words == 1
+									span.card.card-white= hand[0].word
+								else
+									span.card.card-white= hand[0].word
+									span.card.card-white= hand[1].word
+						else
+							i no submission
