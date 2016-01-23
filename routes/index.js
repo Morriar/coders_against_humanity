@@ -25,6 +25,13 @@ router.get('/', function(req, res, next) {
 	res.render('index', {});
 });
 
+router.get('/get_room/:room', function(req, res, next) {
+	var room_id = req.params.room;
+	rooms.findOne(room_id, function(room) {
+		res.json(room)
+	});
+});
+
 router.get('/create_room', function(req, res, next) {
 	res.render('create_room', {});
 });

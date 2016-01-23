@@ -6,6 +6,19 @@ function decrementTimer(id) {
 	}, 1000);
 }
 
+function redirectPlayer(roomId, currentStatus) {
+	window.setTimeout(function() {
+		$.get( "/get_room/" + roomId, function(data) {
+			console.log(data.status);
+			if(data.status != currentStatus) {
+				window.location.href = "/" + data.status;
+			} else {
+				redirectPlayer(roomId, currentStatus);
+			}
+		});
+	}, 1000);
+}
+
 $(document).ready(function() {
 	decrementTimer("#timer");
 
@@ -26,4 +39,9 @@ $(document).ready(function() {
 			$(this).find("input:checkbox").prop("checked", true);
 		}
 	});
+
+	var body = $("body");
+	if(body.data("roomid")) {
+		redirectPlayer(body.data("roomid"), body.data("currentstatus"));
+	}
 });
