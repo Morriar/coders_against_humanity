@@ -101,3 +101,7 @@
 	padding: 2px 5px;
 	cursor: default;
 }
+
+.btn-lg {
+	font-size: 50px;
+}
