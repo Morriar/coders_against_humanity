@@ -26,6 +26,7 @@ exports.create = function(blacks, whites) {
 			black: blacks,
 			white: whites
 		},
+		status: "wait_teams",
 		current_round: {
 			round: 1,
 			hands: {}

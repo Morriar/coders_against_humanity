@@ -19,23 +19,21 @@ var cards = require('../model/cards');
 var rooms = require('../model/rooms');
 var router = express.Router();
 
+/* PUBLIC ROUTES */
+
 router.get('/', function(req, res, next) {
 	res.render('index', {});
 });
 
 router.get('/create_room', function(req, res, next) {
-	if(req.session.room_id) {
-		res.redirect('/wait_teams');
-	} else {
-		cards.find({color: "white"}, function(whites) {
-			cards.find({color: "black"}, function(blacks) {
-				var room = rooms.create(blacks, whites);
-				req.session.admin = true;
-				req.session.room_id = room.id;
-				res.redirect('/wait_teams');
-			});
+	cards.find({color: "white"}, function(whites) {
+		cards.find({color: "black"}, function(blacks) {
+			var room = rooms.create(blacks, whites);
+			req.session.admin = true;
+			req.session.room_id = room.id;
+			res.redirect('/wait_teams');
 		});
-	}
+	});
 });
 
 router.get('/join_room', function(req, res, next) {
@@ -76,26 +74,11 @@ router.get('/wait_teams', function(req, res, next) {
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
-		res.render('wait_teams', { session: req.session, room: room });
-	});
-});
-
-router.get('/new_round', function(req, res, next) {
-	if(!req.session.room_id || !req.session.admin) {
-		res.redirect('/');
-		return;
-	}
-	rooms.findOne(req.session.room_id, function(room) {
-		var card = room.deck.black.pop();
-		var round_number = room.current_round? room.current_round.round + 1 : 1;
-		room.current_round = {
-			round: round_number,
-			black_card: card,
-			status: "open",
-			hands: {}
+		if(room.status != "wait_teams") {
+			res.redirect('/' + room.status);
+			return;
 		}
-		rooms.save(room);
-		res.redirect('/play_round');
+		res.render('wait_teams', { session: req.session, room: room });
 	});
 });
 
@@ -105,6 +88,10 @@ router.get('/play_round', function(req, res, next) {
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
+		if(room.status != "play_round") {
+			res.redirect('/' + room.status);
+			return;
+		}
 		if(req.session.team_name) {
 			var team = room.teams[req.session.team_name];
 			if(!team) {
@@ -134,6 +121,10 @@ router.post('/play_round', function(req, res, next) {
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
+		if(room.status != "play_round") {
+			res.redirect('/' + room.status);
+			return;
+		}
 		var team_name = req.session.team_name;
 		var team_hand = room.teams[team_name].hand;
 
@@ -151,34 +142,17 @@ router.post('/play_round', function(req, res, next) {
 	});
 });
 
-router.get('/end_round', function(req, res, next) {
-	if(!req.session.room_id || !req.session.admin) {
-		res.redirect('/');
-		return;
-	}
-	rooms.findOne(req.session.room_id, function(room) {
-		room.current_round.status = "closed";
-		res.redirect('/show_results');
-	});
-});
-
 router.get('/show_results', function(req, res, next) {
 	if(!req.session.room_id) {
 		res.redirect('/');
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
+		if(room.status != "show_results") {
+			res.redirect('/' + room.status);
+			return;
+		}
 		res.render('show_results', { session: req.session, room: room });
-	});
-});
-
-router.get('/vote_round', function(req, res, next) {
-	if(!req.session.room_id || !req.session.admin) {
-		res.redirect('/');
-		return;
-	}
-	rooms.findOne(req.session.room_id, function(room) {
-		res.redirect('/wait_teams');
 	});
 });
 
@@ -192,6 +166,71 @@ router.get('/end_game', function(req, res, next) {
 		delete req.session.admin;
 		delete req.session.team_name;
 		res.render('end_game', {room: room});
+	});
+});
+
+/* ADMIN ROUTES */
+
+router.get('/new_round', function(req, res, next) {
+	if(!req.session.room_id || !req.session.admin) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		var card = room.deck.black.pop();
+		var round_number = room.current_round? room.current_round.round + 1 : 1;
+		room.status = "play_round";
+		room.current_round = {
+			round: round_number,
+			black_card: card,
+			status: "open",
+			hands: {}
+		}
+		rooms.save(room);
+		res.redirect('/play_round');
+	});
+});
+
+router.get('/end_round', function(req, res, next) {
+	if(!req.session.room_id || !req.session.admin) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		room.status = "show_results";
+		rooms.save(room);
+		res.redirect('/show_results');
+	});
+});
+
+router.post('/vote_round', function(req, res, next) {
+	var team_name = req.body["team"];
+	if(!team_name) {
+		res.redirect('/show_results');
+		return;
+	}
+	if(!req.session.room_id || !req.session.admin) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		var team = room.teams[team_name];
+		team.score += room.current_round.black_card.words;
+		room.status = "wait_teams";
+		rooms.save(room);
+		res.redirect('/wait_teams');
+	});
+});
+
+router.post('/end_game', function(req, res, next) {
+	if(!req.session.room_id) {
+		res.redirect('/');
+		return;
+	}
+	rooms.findOne(req.session.room_id, function(room) {
+		room.status = "show_results";
+		rooms.save(room);
+		res.redirect("/");
 	});
 });
 
