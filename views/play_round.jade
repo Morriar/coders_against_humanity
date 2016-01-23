@@ -9,12 +9,24 @@ block content
 			.progress
 				.progress-bar.progress-bar-warning.progress-bar-striped.active(role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%")#timer
 
+
+		.row
+			table.table
+				tr
+					each team in room.teams
+						if room.current_round.hands[team.name]
+							th(style="width: 25%").success.text-center= team.name
+						else
+							th(style="width: 25%").danger.text-center= team.name
+
+		.row.spacer
+
 		.row
 			.card.card-black= room.current_round.black_card.sentence
 
 		.row.spacer
 
-		if session.team_name
+		if session.team_name && !room.current_round.hands[session.team_name]
 			form#pickCards(action="/play_round", method="post", data-words="#{room.current_round.black_card.words}")
 				.row
 					each card in room.teams[session.team_name].hand
@@ -23,20 +35,13 @@ block content
 								.card.card-white.clickable
 									input(type="checkbox", id="#{card.word}", name="cards[]", value="#{card.word}", style="visibility: hidden;")
 									p= card.word
+
+				.row.spacer
 				.row.text-center
-					button.btn.btn-primary(type="submit") Submit
-
-		.row
-			table.table
-				tr
-					each team in room.teams
-						if room.current_round.hands[team.name]
-							th.success.text-center= team.name
-						else
-							th.danger.text-center= team.name
-
-		.row.spacer
+					button.btn.btn-primary.btn-lg(type="submit") Submit
+				.row.spacer
 
 		if session.admin
 			.row.text-center
-				a.btn.btn-warning(href="/end_round") End Round
+				form(action="end_round", method="post")
+					button.btn.btn-warning.btn-lg(type="submit") End Round

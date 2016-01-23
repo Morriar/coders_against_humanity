@@ -201,7 +201,7 @@ router.post('/new_round', function(req, res, next) {
 	});
 });
 
-router.get('/end_round', function(req, res, next) {
+router.post('/end_round', function(req, res, next) {
 	if(!req.session.room_id || !req.session.admin) {
 		res.redirect('/');
 		return;
