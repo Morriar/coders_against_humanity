@@ -17,7 +17,7 @@ all:
 install-deps:
 	apt-get install node
 	apt-get install npm
-	apt-get install express
+	apt-get install node-express
 
 install:
 	npm install
