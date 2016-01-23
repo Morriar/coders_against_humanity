@@ -18,9 +18,13 @@ block content
 							if hand
 								.card.card-black
 									if black.words == 1
-										span!= black.sentence.replace("____", "<span class='card card-white'>" + hand[0] + "</span>")
+										if black.sentence.indexOf("_" > -1)
+											span!= black.sentence.replace("_", "<span class='card card-white'>" + hand[0] + "</span>")
+										else
+											span!= black.sentence
+												span.card.card-white!= hand[0]
 									else
-										-var parts = black.sentence.split("____")
+										-var parts = black.sentence.split("_")
 										span!= parts[0] + "<span class='card card-white'>" + hand[0] + "</span>" + parts[1] + "<span class='card card-white'>" + hand[1] + "</span>" + parts[2]
 							else
 								i no submission
