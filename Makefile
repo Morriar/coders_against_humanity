@@ -23,9 +23,8 @@ install:
 	npm install
 
 populate:
-	nodejs ./loaddb.js csg_cah cards drop
-	nodejs ./loaddb.js csg_cah cards data/white_cards.json
-	nodejs ./loaddb.js csg_cah cards data/black_cards.json
+	nodejs ./loadCards.js csg_cah cards drop
+	nodejs ./loadCards.js csg_cah cards data/deck2.json
 
 run:
-	npm run
+	npm start
