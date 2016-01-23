@@ -17,6 +17,32 @@
 var db = require('mongoskin').db('mongodb://localhost:27017/csg_cah');
 db.bind('cards');
 
+function shuffle(array) {
+	var currentIndex = array.length, temporaryValue, randomIndex;
+
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
+}
+
+// Get cards in random order
+exports.rand = function(req, callback) {
+	exports.find(req, function(cards) {
+		callback(shuffle(cards));
+	});
+}
+
 // Load all cards and callback(cards);
 exports.find = function(req, callback) {
 	db.cards.find(req).toArray(function(err, cards) {

@@ -179,8 +179,8 @@ router.post('/create_room', function(req, res, next) {
 		res.redirect('/create_room');
 		return;
 	}
-	cards.find({color: "white"}, function(whites) {
-		cards.find({color: "black"}, function(blacks) {
+	cards.rand({color: "white"}, function(whites) {
+		cards.rand({color: "black"}, function(blacks) {
 			var room = rooms.create(code, blacks, whites);
 			req.session.admin = true;
 			req.session.room_id = room.id;
