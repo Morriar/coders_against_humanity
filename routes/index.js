@@ -156,9 +156,10 @@ router.get('/end_game', function(req, res, next) {
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
-		delete req.session.room_id;
-		delete req.session.admin;
-		delete req.session.team_name;
+		if(room.status != "end_game") {
+			res.redirect('/' + room.status);
+			return;
+		}
 		res.render('end_game', {room: room});
 	});
 });
@@ -238,9 +239,9 @@ router.post('/end_game', function(req, res, next) {
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
-		room.status = "show_results";
+		room.status = "end_game";
 		rooms.save(room);
-		res.redirect("/");
+		res.redirect("/end_game");
 	});
 });
 
