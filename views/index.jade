@@ -2,10 +2,15 @@ extends layout
 
 block content
 
-	h1.game-title Coders Against Humanity
+	.container
+		.row
+			h1.game-title Coders Against Humanity
 
-	.container.text-center
-		.col-xs-6
-			a.btn.btn-primary.btn-lg(href="/join_room") Join Room
-		.col-xs-6
-			a.btn.btn-primary.btn-lg(href="/create_room") Create Room
+		.row.spacer
+
+		.row
+			.container.text-center
+				.col-xs-6
+					a.btn.btn-primary.btn-lg(href="/join_room") Join Room
+				.col-xs-6
+					a.btn.btn-primary.btn-lg(href="/create_room") Create Room
