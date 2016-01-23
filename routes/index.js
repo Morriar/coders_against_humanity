@@ -165,7 +165,6 @@ router.get('/end_game', function(req, res, next) {
 
 /* ADMIN ROUTES */
 
-router.get('/new_round', function(req, res, next) {
 router.post('/create_room', function(req, res, next) {
 	var code = req.body["code"];
 	if(!code) {
@@ -182,6 +181,7 @@ router.post('/create_room', function(req, res, next) {
 	});
 });
 
+router.post('/new_round', function(req, res, next) {
 	if(!req.session.room_id || !req.session.admin) {
 		res.redirect('/');
 		return;

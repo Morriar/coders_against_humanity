@@ -22,10 +22,11 @@ block content
 			.row.text-center
 				if room.current_round.round < room.max_rounds
 					div.col-xs-6
-						if room.current_round.round == 1
-							a.btn.btn-primary.btn-lg(href="/new_round") Start Game
-						else
-							a.btn.btn-primary.btn-lg(href="/new_round") New Round
+						form(action="/new_round", method="post")
+							if room.current_round.round == 1
+								button.btn.btn-primary.btn-lg(type="submit") Start Game
+							else
+								button.btn.btn-primary.btn-lg(type="submit") New Round
 					div.col-xs-6
 						a.btn.btn-danger.btn-lg(href="/end_game") End Game
 				else
