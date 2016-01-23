@@ -126,12 +126,26 @@ router.post('/play_round', function(req, res, next) {
 		res.redirect('/play_round');
 		return;
 	}
+	if(!Array.isArray(cards)) {
+		cards = [cards];
+	}
 	if(!req.session.room_id || !req.session.team_name) {
 		res.redirect('/');
 		return;
 	}
 	rooms.findOne(req.session.room_id, function(room) {
-		room.current_round.hands[req.session.team_name] = cards;
+		var team_name = req.session.team_name;
+		var team_hand = room.teams[team_name].hand;
+
+		// remove cards from team hand
+		cards.forEach(function(card) {
+			team_hand.forEach(function(team_card, index) {
+				if(team_card.word == card) {
+					team_hand.splice(index, 1)
+				}
+			});
+		});
+		room.current_round.hands[team_name] = cards;
 		rooms.save(room);
 		res.redirect('/play_round');
 	});
