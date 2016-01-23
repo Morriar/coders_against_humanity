@@ -15,13 +15,13 @@ block content
 		.row.spacer
 
 		if session.team_name
-			form(action="/play_round", method="post")
+			form#pickCards(action="/play_round", method="post", data-words="#{room.current_round.black_card.words}")
 				.row
 					each card in room.teams[session.team_name].hand
 						.col-xs-6
 							.slot
-								.card.card-white
-									input(type="checkbox", id="#{card.word}", name="cards[]", value="#{card.word}")
+								.card.card-white.clickable
+									input(type="checkbox", id="#{card.word}", name="cards[]", value="#{card.word}", style="visibility: hidden;")
 									p= card.word
 				.row.text-center
 					button.btn.btn-primary(type="submit") Submit
