@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+	h1.page-title Join a room
+
+	.container
+		form(action="/create_room", method="post")
+			.form-group
+				input.form-control(type="text", placeholder="room code", name="code", value="1234")
+
+			.form-group.text-center
+				button.btn.btn-primary.btn-lg(type="submit") Create Room!

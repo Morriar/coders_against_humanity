@@ -26,14 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/create_room', function(req, res, next) {
-	cards.find({color: "white"}, function(whites) {
-		cards.find({color: "black"}, function(blacks) {
-			var room = rooms.create(blacks, whites);
-			req.session.admin = true;
-			req.session.room_id = room.id;
-			res.redirect('/wait_teams');
-		});
-	});
+	res.render('create_room', {});
 });
 
 router.get('/join_room', function(req, res, next) {
@@ -42,15 +35,16 @@ router.get('/join_room', function(req, res, next) {
 
 router.post('/join_room', function(req, res, next) {
 	var room_id = req.body.room;
+	var room_code = req.body.code;
 	var team_name = req.body.team;
 
-	if(!room_id || !team_name) {
+	if(!room_id || !room_code || !team_name) {
 		res.redirect('/join_room');
 		return;
 	}
 
 	rooms.findOne(room_id, function(room) {
-		if(!room) {
+		if(!room || room.code != room_code) {
 			res.redirect('/');
 			return;
 		}
@@ -172,6 +166,22 @@ router.get('/end_game', function(req, res, next) {
 /* ADMIN ROUTES */
 
 router.get('/new_round', function(req, res, next) {
+router.post('/create_room', function(req, res, next) {
+	var code = req.body["code"];
+	if(!code) {
+		res.redirect('/create_room');
+		return;
+	}
+	cards.find({color: "white"}, function(whites) {
+		cards.find({color: "black"}, function(blacks) {
+			var room = rooms.create(code, blacks, whites);
+			req.session.admin = true;
+			req.session.room_id = room.id;
+			res.redirect('/wait_teams');
+		});
+	});
+});
+
 	if(!req.session.room_id || !req.session.admin) {
 		res.redirect('/');
 		return;
