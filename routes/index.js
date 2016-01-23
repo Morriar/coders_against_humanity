@@ -164,6 +164,13 @@ router.get('/end_game', function(req, res, next) {
 	});
 });
 
+router.post('/quit_game', function(req, res, next) {
+	delete req.session.room_id;
+	delete req.session.admin;
+	delete req.session.team_name;
+	res.redirect('/');
+});
+
 /* ADMIN ROUTES */
 
 router.post('/create_room', function(req, res, next) {

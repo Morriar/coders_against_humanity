@@ -13,6 +13,7 @@ block content
 						p.score= team.score
 		.row.spacer
 
-		div.row.text-center
+		.row.text-center
 			div.col-xs-12
-				a.btn.btn-danger.btn-lg(href="/") Quit
+				form(action="/quit_game", method="post")
+					button.btn.btn-danger.btn-lg(type="submit") Quit

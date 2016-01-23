@@ -45,3 +45,8 @@ block content
 			.row.text-center
 				form(action="end_round", method="post")
 					button.btn.btn-warning.btn-lg(type="submit") End Round
+		else
+			.row.text-center
+				div.col-xs-12
+					form(action="/quit_game", method="post")
+						button.btn.btn-danger.btn-lg(type="submit") Quit

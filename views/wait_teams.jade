@@ -37,4 +37,5 @@ block content
 		else if session.team_name
 			.row.text-center
 				div.col-xs-12
-					a.btn.btn-danger.btn-lg(href="/end_game") Quit
+					form(action="/quit_game", method="post")
+						button.btn.btn-danger.btn-lg(type="submit") Quit
