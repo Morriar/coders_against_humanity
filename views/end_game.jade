@@ -8,9 +8,15 @@ block content
 		.row
 			each team in room.teams
 				.col-xs-6
-					.slot.slot-success
-						strong= team.name
-						p.score= team.score
+					if winner.indexOf(team) > -1
+						.slot.slot-success
+							strong= team.name
+							p.score= team.score
+					else
+						.slot
+							strong= team.name
+							p.score= team.score
+
 		.row.spacer
 
 		.row.text-center

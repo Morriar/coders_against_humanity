@@ -167,7 +167,18 @@ router.get('/end_game', function(req, res, next) {
 			res.redirect('/' + room.status);
 			return;
 		}
-		res.render('end_game', {room: room});
+		var max_score = 0;
+		var max_team = [];
+		Object.keys(room.teams).forEach(function(name) {
+			var team = room.teams[name];
+			if(team.score > max_score) {
+				max_score = team.score;
+				max_team = [team];
+			} else if(team.score == max_score) {
+				max_team.push(team);
+			}
+		});
+		res.render('end_game', {room: room, winner: max_team});
 	});
 });
 
@@ -208,7 +219,6 @@ router.post('/new_round', function(req, res, next) {
 		room.current_round = {
 			round: round_number,
 			black_card: card,
-			status: "open",
 			hands: {}
 		}
 		rooms.save(room);
