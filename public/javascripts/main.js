@@ -9,7 +9,6 @@ function decrementTimer(id) {
 function redirectPlayer(roomId, currentStatus) {
 	window.setTimeout(function() {
 		$.get( "/get_room/" + roomId, function(data) {
-			console.log(data.status);
 			if(data.status != currentStatus) {
 				window.location.href = "/" + data.status;
 			} else {
@@ -18,6 +17,26 @@ function redirectPlayer(roomId, currentStatus) {
 		});
 	}, 1000);
 }
+
+function updateTeamList(roomId, currentTeam, div) {
+	window.setTimeout(function() {
+		$.get( "/get_room/" + roomId, function(data) {
+			div.empty();
+			Object.keys(data.teams).forEach(function(key){
+				var team = data.teams[key]
+				div.append($("<div>").addClass("col-xs-6")
+					.append($("<div>").addClass(currentTeam == team.name? "slot slot-success": "slot slot-primary")
+						.append($("<strong>").text(team.name))
+						.append($("<p>").addClass("score").text(team.score))
+					)
+				);
+			console.log(team);
+			})
+			updateTeamList(roomId, currentTeam, div);
+		});
+	}, 2000);
+}
+
 
 $(document).ready(function() {
 	decrementTimer("#timer");
@@ -43,5 +62,6 @@ $(document).ready(function() {
 	var body = $("body");
 	if(body.data("roomid")) {
 		redirectPlayer(body.data("roomid"), body.data("currentstatus"));
+		updateTeamList(body.data("roomid"), body.data("currentteam"), $("#teams"));
 	}
 });

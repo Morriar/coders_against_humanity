@@ -6,7 +6,7 @@ html
 		link(rel='stylesheet' href='/stylesheets/main.css')
 
 	if session && room
-		body(data-roomid=session.room_id, data-currentstatus=room.status)
+		body(data-roomid=session.room_id, data-currentstatus=room.status, data-currentteam=session.team_name)
 			block content
 
 			script(src='/vendors/jquery-2.1.4-min/jquery.js')

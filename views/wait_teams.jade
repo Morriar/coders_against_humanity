@@ -7,7 +7,7 @@ block content
 	h1.page-title round #{room.current_round.round} / #{room.max_rounds}
 
 	.container
-		.row
+		.row#teams
 			each team in room.teams
 				.col-xs-6
 					if session.team_name && session.team_name == team.name
