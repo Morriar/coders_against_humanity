@@ -12,7 +12,7 @@ block content
 
 		.row
 			table.table
-				tr
+				tr#teams-status
 					each team in room.teams
 						if room.current_round.hands[team.name]
 							th(style="width: 25%").success.text-center= team.name

@@ -30,9 +30,27 @@ function updateTeamList(roomId, currentTeam, div) {
 						.append($("<p>").addClass("score").text(team.score))
 					)
 				);
-			console.log(team);
 			})
 			updateTeamList(roomId, currentTeam, div);
+		});
+	}, 2000);
+}
+
+function updateTeamStatus(roomId, tr) {
+	window.setTimeout(function() {
+		$.get( "/get_room/" + roomId, function(data) {
+			tr.empty();
+			Object.keys(data.teams).forEach(function(key){
+				var team = data.teams[key]
+				tr.append(
+					$("<th>")
+					.css("width", "25%")
+					.addClass("text-center")
+					.addClass(data.current_round.hands[team.name]? "success": "danger")
+					.text(team.name)
+				);
+			})
+			updateTeamStatus(roomId, tr);
 		});
 	}, 2000);
 }
@@ -63,5 +81,6 @@ $(document).ready(function() {
 	if(body.data("roomid")) {
 		redirectPlayer(body.data("roomid"), body.data("currentstatus"));
 		updateTeamList(body.data("roomid"), body.data("currentteam"), $("#teams"));
+		updateTeamStatus(body.data("roomid"), $("#teams-status"));
 	}
 });
