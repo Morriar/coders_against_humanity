@@ -22,7 +22,7 @@ block content
 
 		if session.admin
 			.row.text-center
-				if room.current_round.round < room.max_rounds
+				if room.current_round.round <= room.max_rounds
 					div.col-xs-6
 						form(action="/new_round", method="post")
 							if room.current_round.round == 1
