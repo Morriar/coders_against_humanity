@@ -15,3 +15,14 @@ block content
 
 			.form-group.text-center
 				button.btn.btn-primary.btn-lg(type="submit") Join Room!
+
+	.container
+
+		if rooms
+			h3 Last rooms
+
+			table
+				each room in rooms
+					tr
+						td
+							a.click-room(href="#", data-room=room.id)= room.id

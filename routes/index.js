@@ -37,7 +37,9 @@ router.get('/create_room', function(req, res, next) {
 });
 
 router.get('/join_room', function(req, res, next) {
-	res.render('join_room', {});
+	rooms.findLast({}, 10, function(lastRooms) {
+		res.render('join_room', {rooms: lastRooms});
+	});
 });
 
 router.post('/join_room', function(req, res, next) {
