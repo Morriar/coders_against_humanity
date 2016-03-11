@@ -17,11 +17,11 @@
 var db = require('mongoskin').db('mongodb://localhost:27017/csg_cah');
 db.bind('rooms');
 
-exports.create = function(code, blacks, whites) {
+exports.create = function(code, blacks, whites, maxRounds) {
 	var room = {
 		id: new Date().getTime().toString(),
 		code: code,
-		max_rounds: 5,
+		max_rounds: maxRounds,
 		teams: {},
 		deck: {
 			black: blacks,

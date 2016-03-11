@@ -8,6 +8,8 @@ block content
 		form(action="/create_room", method="post")
 			.form-group
 				input.form-control(type="text", placeholder="room code", name="code")
+			.form-group
+				input.form-control(type="text", value="5", name="rounds")
 
 			.form-group.text-center
 				button.btn.btn-primary.btn-lg(type="submit") Create Room!

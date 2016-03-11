@@ -194,14 +194,15 @@ router.post('/quit_game', function(req, res, next) {
 /* ADMIN ROUTES */
 
 router.post('/create_room', function(req, res, next) {
-	var code = req.body["code"];
-	if(!code) {
+	var code = req.body.code;
+	var maxRounds = req.body.rounds;
+	if(!code || !maxRounds) {
 		res.redirect('/create_room');
 		return;
 	}
 	cards.rand({color: "white"}, function(whites) {
 		cards.rand({color: "black"}, function(blacks) {
-			var room = rooms.create(code, blacks, whites);
+			var room = rooms.create(code, blacks, whites, maxRounds);
 			req.session.admin = true;
 			req.session.room_id = room.id;
 			res.redirect('/wait_teams');
