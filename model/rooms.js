@@ -47,6 +47,16 @@ exports.find = function(req, callback) {
 	});
 }
 
+exports.findLast = function(req, limit, callback) {
+	db.rooms.find(req).sort({id: -1}).limit(limit).toArray(function(err, rooms) {
+		if(err) {
+			console.log(err);
+			rooms = [];
+		}
+		callback(rooms);
+	});
+}
+
 exports.findOne = function(room_id, callback) {
 	db.rooms.findOne({id: room_id}, function(err, room) {
 		callback(room);
