@@ -3,8 +3,12 @@ extends layout
 block content
 
 	h1.page-title #{room.id}
-	h1.page-title Waiting for teams...
-	h1.page-title round #{room.current_round.round} / #{room.max_rounds}
+
+	if room.current_round.round > room.max_rounds
+		h1.page-title Game Over
+	else
+		h1.page-title Waiting for teams...
+		h1.page-title round #{room.current_round.round} / #{room.max_rounds}
 
 	.container
 		.row#teams
@@ -22,7 +26,7 @@ block content
 
 		if session.admin
 			.row.text-center
-				if room.current_round.round < room.max_rounds
+				if room.current_round.round <= room.max_rounds
 					div.col-xs-6
 						form(action="/new_round", method="post")
 							if room.current_round.round == 1
