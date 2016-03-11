@@ -1,0 +1,306 @@
+{
+    "blackCards": [
+        {
+            "text": "To err is _, but to really mess things up requires a _",
+            "pick": 1
+        },
+        {
+            "text": "_. That is all.",
+            "pick": 1
+        },
+        {
+            "text": "I lost my innocence when I saw _ on the internet for the first time.",
+            "pick": 1
+        },
+        {
+            "text": "A hackathon would not be complete without _",
+            "pick": 1
+        },
+        {
+            "text": "Let me tell you about my new startup.  It's basically _, but for _",
+            "pick": 2
+        },
+        {
+            "text": "Linus Torvalds would kill for _.",
+            "pick": 1
+        },
+        {
+            "text": "Apple has recently stolen a new idea to _. They’re calling it _.",
+            "pick": 2
+        },
+        {
+            "text": "A new programming paradigm has been developed, it is _.",
+            "pick": 1
+        },
+        {
+            "text": "The new Mortal Combat™ opus was released: _.",
+            "pick": 1
+        },
+        {
+            "text": "Unit testing has its advantages, such as prohibiting _ and _.",
+            "pick": 2
+        },
+        {
+            "text": "The CI will fail a build in case _ is missing.",
+            "pick": 1
+        },
+        {
+            "text": "There is one formal specification that should NEVER be ignored : _.",
+            "pick": 1
+        },
+        {
+            "text": "_, here is a solution a UNIX Senior Engineer can always rely on.",
+            "pick": 1
+        },
+        {
+            "text": "A new software engineer was hired. His job consists in _.",
+            "pick": 1
+        },
+        {
+            "text": "This piece of code is ugly, maybe because of _.",
+            "pick": 1
+        },
+        {
+            "text": "Hack the _",
+            "pick": 1
+        },
+        {
+            "text": "What is the least preferred software? _",
+            "pick": 1
+        },
+        {
+            "text": "What leaks more than Ashley Madison? __",
+            "pick": 1
+        },
+        {
+            "text": "Apple vs. _",
+            "pick": 1
+        },
+        {
+            "text": "_.js",
+            "pick": 1
+        },
+        {
+            "text": "In the next Tim Burton Movie: Johnny Depp plays a _ who is hilariously proficient in _",
+            "pick": 2
+        },
+        {
+            "text": "Introducing Captain _, Master of _",
+            "pick": 2
+        },
+        {
+            "text": "As if it wasn't obvious, the winning team of this years CS Games realized the the real key to success was _",
+            "pick": 1
+        },
+        {
+            "text": "In the next episode of House of Cards, Frank Underwood is shocked to find out _ has _",
+            "pick": 2
+        },
+        {
+            "text": "_ is the real reason I code.",
+            "pick": 1
+        },
+        {
+            "text": "What's for dinner? _",
+            "pick": 1
+        },
+        {
+            "text": "What's funnier than _ ? _",
+            "pick": 2
+        },
+        {
+            "text": "In my butt, I can fit _",
+            "pick": 1
+        },
+        {
+            "text": "Tonight, I'm gonna watch _ porn",
+            "pick": 1
+        },
+        {
+            "text": "My religion doesn't allow _",
+            "pick": 1
+        },
+        {
+            "text": "And now, The Tonight Show Starring Jimmy Fallon with _",
+            "pick": 1
+        },
+        {
+            "text": "_, I bet the Jews did it",
+            "pick": 1
+        },
+        {
+            "text": "I like _ with my pastas",
+            "pick": 1
+        },
+        {
+            "text": "Back in the days, _ was not considered as racism",
+            "pick": 1
+        },
+        {
+            "text": "_ porn",
+            "pick": 1
+        },
+        {
+            "text": "I bet we could fix _ using the block chain",
+            "pick": 1
+        },
+        {
+            "text": "I'm pretty sure we should have stopped at _.js",
+            "pick": 1
+        },
+        {
+            "text": "This programming language could use a bit more _",
+            "pick": 1
+        },
+        {
+            "text": "Java is the best programming language if you are looking to make _",
+            "pick": 1
+        },
+        {
+            "text": "When someone knows _ you can be sure that they are a(n) _",
+            "pick": 2
+        },
+        {
+            "text": "In Soviet Russia _ _ you!",
+            "pick": 2
+        },
+        {
+            "text": "_ is the most used programming language.",
+            "pick": 1
+        },
+        {
+            "text": "I knew I had to stop debugging when I made _.",
+            "pick": 1
+        },
+        {
+            "text": "I came back from lunch to see that my desktop background was changed to _.",
+            "pick": 1
+        },
+        {
+            "text": "My friend yelled _ when he died playing Dark Souls 2.",
+            "pick": 1
+        },
+        {
+            "text": "En allant aux toilettes aux CS Games, j'ai vu _",
+            "pick": 1
+        },
+        {
+            "text": "J'étais tellement saoul hier, que j'ai rentré _ dans _ ",
+            "pick": 2
+        },
+        {
+            "text": "Mon équipe aurait gagné les CS Games 2016, si ce n'était de _",
+            "pick": 1
+        },
+        {
+            "text": "Cette année, au lieu d'une haie d'honneur, l'équipe gagnante aura droit à _",
+            "pick": 1
+        },
+        {
+            "text": "À cause des excès de l'an passé, cette année l'alcool sera remplacée par _",
+            "pick": 1
+        }
+    ],
+    "whiteCards": [
+        "Un kilt en tape",
+        "Un kilt en tape",
+        "Un tapis tellement beurré de bière que ça fait squick squick quand tu marches dessus",
+        "Des canards en plastique",
+        "Des canards en plastique",
+        "L'UQAM",
+        "Un hacker sans son terminal",
+        "Poly avec de la poudre à bébé",
+        "La zone sans pantalons",
+        "JOOOOOOOOOOOOOOOOHN CCCCCCCCCCCC#",
+        "Miranda",
+        "Fortran",
+        "A rubber duck set on fire",
+        "One of Egoraptor's chins",
+        "Beer from Wal-Mart",
+        "Praise the sun!",
+        "Sharks with freaking lazer beams",
+        "a black and white version of Greymon",
+        "\"Danny Sexbang's luxurious jew fro\"",
+        "A hidden stash of dank memes",
+        "@SwiftOnSecurity",
+        "DEFCON",
+        "IBM",
+        "functional (programming paradigm)",
+        "javascript",
+        "Microsoft",
+        "XKCD",
+        "Stackoverflow",
+        "TOR",
+        "Cyber warfare",
+        "Mecha Hitler with laser tits and butt rockets",
+        "Sea otters blowing each other in the backyard",
+        "Sex with an asian guy, a black guy, a jew and Bill Clinton",
+        "Sucking your teacher for good grades",
+        "Dean Winchester giving a handjob to Sam and Castiel at the same time",
+        "Minions porn with Gru",
+        "Licking buttholes for cheap meth",
+        "Galactanus, Devourer of Buttholes",
+        "Iron Man and Captain America in a german sex dungeon",
+        "DAMN YOU UQAM",
+        "Two penises at the same time",
+        "Tentacles",
+        "More tentacles",
+        "Horse porn with midgets and axes",
+        "A zip tie as a cockring",
+        "Your mother, your uncle and the neighbour",
+        "I lost my virginity with Peps",
+        "A shitload of tentacles",
+        "Butt stuff for dinner",
+        "Jerking off so much only powder comes out",
+        "Arch Linux",
+        "Vimscript",
+        "McAffee",
+        "mate1",
+        "Buffer overflow",
+        "Computer Game Sciences",
+        "A monadic endofunctors",
+        "Biggest Blackest Python",
+        "Big Black Python",
+        "Big Blackest Python",
+        "An uncomfortably attractive pre-op tranny",
+        "Second-hand adult diapers",
+        "Benny Lava",
+        "Mother Therasa",
+        "World Series of Felching",
+        "suspiciously hidden cured meat",
+        "Excruciatingly graphic sonic the hedgehog fanfiction",
+        "Gentleman's Reslish",
+        "Newborn baby with Donald Trump's hair",
+        "Watching a great big fat person jiggle as they walk ",
+        "A rim job on Richard Stallman.",
+        "Using the What The F**k Public License for your project.",
+        "Not surrounding ( ) after sizeof.",
+        "Writing “eat my junk CUNTS” as commit message.",
+        "GNU’s source code.",
+        "Using incognito for tentacle porn.",
+        "Exceeding the Ballmer Peak while watching My Little Poney™.",
+        "Nicki Minaj’s “Python” skills.",
+        "Faith-oriented programming.",
+        "The new Java™ 9’s ChineseBotnetUnderTheHoodWhileNoOneCanSeeProxyFlawlessStrategyAbstractFactory class.",
+        "# rm -r /",
+        "God Class Syndrome.",
+        "C++’s virtual-methods-inside-templated-class-with-variadic-templated-arguments-supporting-RTTI beautiful syntax.",
+        "The DeepThroat Botnet.",
+        "Push-N-Pray.",
+        "Gay porn wallpapers.",
+        "A couple of buzzwords about web scalability.",
+        "YO MAMA’S SO FAT",
+        "> /dev/null",
+        "An inappropriate speech about “backdoors”.",
+        "Mark Zuckerberg",
+        "Facebook",
+        "Bill Gates",
+        "Microsoft",
+        "C++",
+        "Java",
+        "Python",
+        "Computer Science",
+        "Internet",
+        "CS Games"
+    ]
+}
