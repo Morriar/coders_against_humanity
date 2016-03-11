@@ -83,4 +83,9 @@ $(document).ready(function() {
 		updateTeamList(body.data("roomid"), body.data("currentteam"), $("#teams"));
 		updateTeamStatus(body.data("roomid"), $("#teams-status"));
 	}
+
+	$(".click-room").click(function() {
+		$("input[name='room']").val($(this).data("room"));
+		return false;
+	})
 });
