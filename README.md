@@ -3,6 +3,13 @@
 A Node.JS implementation of the famous game
 [Cards Against Humanity](http://cardsagainsthumanity.com/).
 
+<table>
+	<tr>
+		<td><img src='https://raw.githubusercontent.com/Morriar/coders_against_humanity/master/doc/example1.png'></td>
+		<td><img src='https://raw.githubusercontent.com/Morriar/coders_against_humanity/master/doc/example2.png'></td>
+	</tr>
+</table>
+
 ## Pre-Requisites
 
 * nodejs >= 0.10
